@@ -1,0 +1,16 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import statsmodels.formula.api as smf
+
+data=pd.read_csv("Advertising.csv")
+print data.head()
+lm=smf.ols(formula="Sales~TV",data=data).fit()
+parametros=lm.params
+print parametros
+p_valores=lm.pvalues
+print p_valores
+r2=lm.rsquared
+print r2
+resumen=lm.summary()
+print resumen

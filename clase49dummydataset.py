@@ -1,0 +1,59 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+gender=["Male","Female"]
+income=["Poor","Middle Class", "Rich"]
+n=500
+
+gender_data=[]
+income_data=[]
+
+for i in range(0,500):
+
+	gender_data.append(np.random.choice(gender))
+	income_data.append(np.random.choice(income))
+
+height=160+30*np.random.randn(n)
+weight=65+25*np.random.randn(n)
+age=30+12*np.random.randn(n)
+income=1800+3500*np.random.rand(n)
+
+
+data=pd.DataFrame(
+
+	{
+		"Gender":gender_data,
+		"Economic Status":income_data,
+		"Height":height,
+		"weight":weight,
+		"Age":age,
+		"Income":income
+	}
+)
+
+print data
+print data[data["Age"] >40]
+
+
+print "\n\nDatos Agrupados\n\n"
+
+grouped_gender=data.groupby("Gender")
+print grouped_gender.groups
+
+for names, groups in grouped_gender:
+
+	print names
+	print groups
+
+
+grou_female=grouped_gender.get_group("Female")
+print grou_female
+
+double_group=data.groupby(["Gender","Economic Status"])
+
+for names,groups in double_group:
+
+	print names
+	print groups

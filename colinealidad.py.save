@@ -1,0 +1,28 @@
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import statsmodels.formula.api as smf
+
+data=pd.read_csv("Advertising.csv")
+print data.head()
+
+lm_n=smf.ols(formula="Newspaper~TV+Radio",data=data).fit()
+rsquared_n=lm_n.rsquared
+VIF=1/(rsquared_n)
+print "rsquared_n::",rsquared  GNU nano 2.7.4                    File: multipleregression.py                               
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import statsmodels.formula.api as smf
+
+data=pd.read_csv("Advertising.csv")
+print data.head()
+
+lm=smf.ols(formula="Sales~TV+Newspaper",data=data).fit()
+parametros=lm.params
+p_valores=lm.pvalues
+
+
